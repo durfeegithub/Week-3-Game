@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>The Psychedelic Psychic Game</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="This is Coding Bootcamp Homework Assignment 3" />
+  <meta name="author" content="Stephen Durfee" />
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script type="text/javascript" href="assets/javascript/game.js"></script>
+</head>
+
+<body>
+
+  <header>The Psychedelic Psychic Game</header>
+  <audio loop="loop" autoplay="autoplay" source src="assets/audio/rabbit.mp3" />  
+  </audio> 
+  <img src="https://s-media-cache-ak0.pinimg.com/originals/53/e9/21/53e921ba67680b1f145c778b7eab5131.gif">
+
+
+<div id="game">
+<p>If You Are In The Right Space, Guess What Letter I'm Thinking Of?</p>
+<p>Wins:<span id="wins"></span></p>
+<p>Losses:<span id="losses"></span></p>
+<p>Guesses Left: <span id="guessesLeft"></span><p>
+<p>Your Guesses So Far:<span id="userGuess"></span></p>
+</div>
+<script type="text/javascript">
+
+//Variables
+
+  var options = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  var wins = 0;
+  var losses = 0;
+  var guessesLeft = 10;
+  var lettersGuessed = userGuess;
+  var computerGuess = options[Math.floor(Math.random()*options.length)];
+  console.log("Computer Guessed: " + computerGuess);
+
+  //Functions
+
+  function subtract(){
+    if (guessesLeft >= 1) {
+
+      guessesLeft --;
+      
+      console.log(guessesLeft);
+    }
+    else {
+      gameOver();
+      return;
+    }
+  }
+
+  
+  function reWriteStats(){
+      guessesLeft = 10;
+      computerGuess = options[Math.floor(Math.random()*options.length)];
+      console.log("Computer Guessed: " + computerGuess);
+  }
+
+  function gameOver(){
+        alert("Game Over!")
+        losses ++;
+        reWriteStats();
+    }
+
+  //Game event
+
+	document.onkeyup = function(event) {
+
+  
+  var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+  console.log(userGuess);
+
+     //Console Log of guesses made
+  if (userGuess == computerGuess) {
+    console.log("Win!");
+    wins ++;
+    reWriteStats();
+  }
+
+  else {
+    console.log("Wrong try again!");
+    subtract();
+  }
+
+document.getElementById("wins").innerHTML= wins;
+document.getElementById("losses").innerHTML= losses;
+document.getElementById("guessesLeft").innerHTML= guessesLeft;
+document.getElementById("userGuess").innerHTML= userGuess;
+}
+    
+   
+</script>
+
+<footer> &copy; Stephen Durfee 2016 </footer>
+</body>
+</html>

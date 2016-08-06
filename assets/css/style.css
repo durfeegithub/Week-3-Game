@@ -1,0 +1,22 @@
+*{
+	text-align: center;
+	margin: 10px;
+	color: gray;
+	background-color: #541515;
+}
+img{
+	width: 400px;
+	height: auto;
+	margin-top: 10px;
+}
+header,
+div,
+footer {
+	padding: 60px;
+}
+header{
+	font-size: 60px;
+}
+div{
+	font-size: 28px;
+}
